@@ -25,8 +25,8 @@ export const projectsData = [
       "Comprehensive tariff fixation study for Solar PV systems with Battery Energy Storage conducted for Electricity Regulatory Commission.",
     longDescription:
       "Groundbreaking policy research conducted in collaboration with Sara Solutions Pvt. Ltd., analyzing optimal pricing structures for solar energy systems with battery storage integration.",
-    link: "/projects/tariff-study",
     category: "Policy Research",
+   
     year: "2024",
     location: "Nepal",
     capacity: "Policy Framework Development",

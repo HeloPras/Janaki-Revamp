@@ -1,0 +1,483 @@
+@import "tailwindcss";
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+  --primary-blue: #3489AE;
+  --primary-green: #4ade80;
+  --primary-dark-green: #22c55e;
+  --primary-yellow: #FFD700;
+  
+  /* Updated Color Palette - Blue & Green Theme */
+  --theme-primary-blue: #3489AE;
+  --theme-secondary-blue: #2C6B7A;
+  --theme-dark-blue: #1E4B52;
+  --theme-primary-green: #4ade80;
+  --theme-secondary-green: #22c55e;
+  --theme-accent-green: #16a34a;
+  --theme-text-primary: #FFFFFF;
+  --theme-text-secondary: #F8F9FA;
+  --theme-text-dark: #2D3748;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.1); }
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+/* Cloud animation */
+@keyframes drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100px); }
+}
+
+.animate-drift {
+  animation: drift 20s ease-in-out infinite alternate;
+}
+
+.drift-delay-1 {
+  animation-delay: 0s;
+}
+
+.drift-delay-2 {
+  animation-delay: 5s;
+}
+
+/* Custom Utility Classes */
+.hover-lift {
+  transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* Custom color classes */
+.bg-primary-blue {
+  background-color: var(--primary-blue);
+}
+
+.text-primary-blue {
+  color: var(--primary-blue);
+}
+
+.bg-primary-green {
+  background-color: var(--primary-green);
+}
+
+.text-primary-green {
+  color: var(--primary-green);
+}
+
+.text-primary-yellow {
+  color: var(--primary-yellow);
+}
+
+.bg-primary-yellow {
+  background-color: var(--primary-yellow);
+}
+
+/* Typography Hierarchy */
+@layer base {
+  /* Main Headings - Bold, Modern */
+  h1 {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+  }
+  
+  /* Section Headings - Professional */
+  h2 {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Subsection Headings - Clean */
+  h3 {
+    font-family: var(--font-lexend), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  
+  /* Card/Component Headings */
+  h4, h5, h6 {
+    font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+  }
+  
+  /* Body Text - Readable */
+  p, body {
+    font-family: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  
+  /* Buttons and Labels - Modern */
+  button, .button, .btn {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
+  }
+  
+  /* Navigation and UI Elements */
+  nav, .nav {
+    font-family: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
+  }
+  
+  /* Utility Font Classes */
+  .font-inter {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+  
+  .font-poppins {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  }
+  
+  .font-lexend {
+    font-family: var(--font-lexend), ui-sans-serif, system-ui, sans-serif;
+  }
+  
+  .font-lato {
+    font-family: var(--font-lato), ui-sans-serif, system-ui, sans-serif;
+  }
+  
+  .font-playfair {
+    font-family: var(--font-playfair), serif;
+  }
+  
+  .font-montserrat {
+    font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Hero section fancy font */
+  .hero-fancy-font {
+    font-family: var(--font-playfair), serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-[#3489AE] text-white font-semibold rounded-md shadow-lg hover:bg-[#2C6B7A] transition-colors flex items-center justify-center;
+  }
+  
+  .btn-outline {
+    @apply px-6 py-3 bg-transparent border-2 border-[#4ade80] text-[#4ade80] font-semibold rounded-md hover:bg-[#4ade80] hover:text-white transition-colors flex items-center justify-center;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-4;
+  }
+  
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-width {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+/* Professional Hero Section Styles */
+@keyframes subtle-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes professional-glow {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(16, 146, 207, 0.2);
+  }
+  50% {
+    box-shadow: 0 8px 40px rgba(16, 146, 207, 0.3);
+  }
+}
+
+/* Professional Utility Classes */
+.professional-fade-in {
+  animation: subtle-fade-in 0.8s ease-out;
+}
+
+.professional-glow {
+  animation: professional-glow 2s ease-in-out infinite;
+}
+
+/* Responsive Text Clamp */
+.hero-headline {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  line-height: 1.2;
+}
+
+.hero-subheadline {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* Video Performance Optimization */
+video {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Custom Scale Utilities */
+.scale-102 {
+  transform: scale(1.02);
+}
+
+/* Solar Panel Grid Background - Much Larger Cells with Thinner Lines */
+.solar-grid-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.15;
+  background-image: 
+    linear-gradient(to right, rgba(52, 136, 174, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(52, 136, 174, 0.6) 1px, transparent 1px);
+  background-size: 120px 120px;
+  background-position: -1px -1px;
+  animation: subtle-grid-shift 60s ease-in-out infinite;
+}
+
+/* Solar Panel Grid with larger cell effect and missing parts */
+.solar-grid-backdrop::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    /* Primary diagonal pattern */
+    linear-gradient(45deg, transparent 25%, rgba(52, 136, 174, 0.08) 25%, rgba(52, 136, 174, 0.08) 75%, transparent 75%),
+    /* Secondary diagonal pattern */
+    linear-gradient(-45deg, transparent 25%, rgba(74, 222, 128, 0.05) 25%, rgba(74, 222, 128, 0.05) 75%, transparent 75%),
+    /* Missing parts effect - creates gaps */
+    radial-gradient(circle at 25% 25%, transparent 15px, rgba(52, 136, 174, 0.03) 16px, rgba(52, 136, 174, 0.03) 45px, transparent 46px),
+    radial-gradient(circle at 75% 75%, transparent 20px, rgba(74, 222, 128, 0.02) 21px, rgba(74, 222, 128, 0.02) 55px, transparent 56px);
+  background-size: 240px 240px, 240px 240px, 360px 360px, 480px 480px;
+  background-position: 0 0, 120px 120px, -60px -60px, 60px 60px;
+}
+
+/* Hero Section - Much Bigger Grid to Match Video Overlay with Thinner Lines */
+.hero-grid-large {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.12;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+  background-size: 150px 150px;
+  background-position: -1px -1px;
+}
+
+.hero-grid-large::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, transparent 20%, rgba(255, 255, 255, 0.06) 20%, rgba(255, 255, 255, 0.06) 80%, transparent 80%),
+    linear-gradient(-45deg, transparent 20%, rgba(255, 255, 255, 0.04) 20%, rgba(255, 255, 255, 0.04) 80%, transparent 80%);
+  background-size: 300px 300px;
+  background-position: 0 0, 150px 150px;
+}
+
+/* Responsive solar grid - smaller on mobile but still visible with thinner lines */
+@media (max-width: 768px) {
+  .solar-grid-backdrop {
+    background-size: 80px 80px;
+    opacity: 0.12;
+    background-image: 
+      linear-gradient(to right, rgba(52, 136, 174, 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(52, 136, 174, 0.6) 1px, transparent 1px);
+  }
+  
+  .solar-grid-backdrop::before {
+    background-size: 160px 160px, 160px 160px, 240px 240px, 320px 320px;
+    background-position: 0 0, 80px 80px, -40px -40px, 40px 40px;
+  }
+
+  .hero-grid-large {
+    background-size: 100px 100px;
+  }
+
+  .hero-grid-large::before {
+    background-size: 200px 200px;
+    background-position: 0 0, 100px 100px;
+  }
+}
+
+/* Alternative subtle solar grid for light sections */
+.solar-grid-light {
+  position: relative;
+}
+
+.solar-grid-light::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.02;
+  background-image: 
+    linear-gradient(to right, rgba(16, 146, 207, 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 146, 207, 0.3) 1px, transparent 1px);
+  background-size: 35px 35px;
+  background-position: -1px -1px;
+}
+
+/* Solar Grid Subtle Animation */
+@keyframes subtle-grid-shift {
+  0%, 100% {
+    background-position: -1px -1px;
+    opacity: 0.15;
+  }
+  50% {
+    background-position: 1px 1px;
+    opacity: 0.12;
+  }
+}
+
+/* Ensure content remains readable above solar grid */
+.content-above-grid {
+  position: relative;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.content-above-grid-dark {
+  position: relative;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.95);
+}
+
+/* Make sure all main sections appear above the solar grid */
+section {
+  position: relative;
+  z-index: 5;
+  background-color: inherit;
+}
+
+/* Special handling for hero sections that might need transparency */
+.hero-section {
+  position: relative;
+  z-index: 5;
+}
+
+/* Video sections should allow grid to show through */
+.video-section {
+  position: relative;
+  z-index: 2;
+}
+
+/* Video backdrop grid overlay for video sections with thinner lines */
+.video-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.15;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+  background-size: 120px 120px;
+  background-position: -1px -1px;
+}
+
+/* Content cards and components above grid */
+.card, .bg-white, .bg-gray-50, .bg-gray-100 {
+  position: relative;
+  z-index: 10;
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .professional-fade-in,
+  .professional-glow,
+  .solar-grid-backdrop {
+    animation: none;
+  }
+}
+
+/* Disable solar grid on specific sections if needed */
+.no-solar-grid::before {
+  display: none !important;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .modern-hero-section {
+    background: #000000;
+    color: #ffffff;
+  }
+  
+  .modern-hero-section .cta-primary {
+    background: #ffffff;
+    color: #000000;
+    border: 2px solid #ffffff;
+  }
+  
+  .modern-hero-section .cta-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+  }
+
+  /* Hide solar grid in high contrast mode */
+  .solar-grid-backdrop,
+  .solar-grid-light::before {
+    display: none !important;
+  }
+}

@@ -17,6 +17,7 @@ export interface ServiceStep {
     title: string;
     category: string;
   }
+
   
   export interface ServiceStat {
     value: string;

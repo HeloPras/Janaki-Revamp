@@ -29,6 +29,7 @@ export const projectsData = [
    
     year: "2024",
     location: "Nepal",
+    link:'/projects/tariff-study',
     capacity: "Policy Framework Development",
     impact: "National Energy Policy",
     image: "/2.jpeg",

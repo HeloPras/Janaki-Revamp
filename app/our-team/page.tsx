@@ -3,10 +3,10 @@
 import React from 'react';
 import Image from 'next/image';
 import VideoBackdrop from '@/components/VideoBackdrop';
-import { BoardCard } from '../board-of-directors/page';
 import { teamMembers } from '@/data/teammember';
 import { User, Zap, Users, Cog, Calculator, Scale, Leaf, Building, FlaskConical, MapPin, Settings } from 'lucide-react';
 import { advisors } from '@/data/teammember';
+import { BoardCard } from '@/components/board-of-director/BoardCard';
 
 
 const TeamCard = ({ member }: { member:TeamMember  }) => {
